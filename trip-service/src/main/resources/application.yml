@@ -1,5 +1,9 @@
 server:
   port: 8084
+  tomcat:
+    threads:
+      max: 800         # Default is 200. Allows more simultaneous HTTP requests.
+    accept-count: 1000 # Default is 100. Increases the waiting queue size.
 
 spring:
   application:
@@ -9,6 +13,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/miniuber
     username: miniuber
     password: miniuber123
+    hikari:
+      maximum-pool-size: 50   # Default is 10. Allows more simultaneous DB writes.
+      connection-timeout: 30000
 
   jpa:
     hibernate:
